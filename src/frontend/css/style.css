@@ -1,0 +1,17 @@
+body {
+    font-family: sans-serif;
+}
+
+#todoList {
+    list-style: none;
+    padding: 0;
+}
+
+#todoList li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#todoList li:last-child {
+    border-bottom: none;
+}
