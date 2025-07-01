@@ -1,4 +1,4 @@
-const API_BASE_URL = 'API_BASE_URL_PLACEHOLDER';
+const API_BASE_URL = '/api/proxy.php';
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('todoForm');

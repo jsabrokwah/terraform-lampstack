@@ -1,6 +1,12 @@
 # LAMP Stack Todo Application
 
-A simple todo application built with a LAMP stack.
+A simple todo application built with a LAMP stack. This application allows users to create, read, update, and delete (CRUD) todo items. The application uses a MySQL database to store todo items and a PHP backend to handle requests.
+
+The infrastructure was automatically provisioned using Terraform and AWS. The application is deployed on an EC2 instance running Amazon Linux 2.
+
+## Usage
+
+- Use the frontend interface ([click here](http://3.72.64.36/)) to manage todo items.
 
 ## Features
 
@@ -30,9 +36,4 @@ A simple todo application built with a LAMP stack.
    - Run `terraform init` to initialize.
    - Run `terraform apply` to create resources.
 4. Access the application through your EC2 instance's public IP or domain name.
-
-## Usage
-
-- Use the frontend interface to manage todo items.
-- Alternatively, use the RESTful API endpoints in `src/api/` for CRUD operations.
 

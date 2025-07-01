@@ -16,12 +16,16 @@ git clone https://github.com/jsabrokwah/terraform-lampstack.git /tmp/app-repo
 mkdir -p /var/www/html
 cp -r /tmp/app-repo/src/frontend/* /var/www/html/
 
-# Replace API base URL placeholder in frontend JS with actual API URL from Terraform output
-# The API_URL variable should be passed to this script via Terraform user_data variables
-if [ -n "$APP_INSTANCE_PRIVATE_IP" ]; then
-  API_URL="http://$APP_INSTANCE_PRIVATE_IP/api"
-  sed -i "s|API_BASE_URL_PLACEHOLDER|$API_URL|g" /var/www/html/js/scripts.js
-fi
+# Replace API base URL placeholder in frontend JS with proxy URL
+sed -i "s|API_BASE_URL_PLACEHOLDER|/api/proxy.php|g" /var/www/html/js/scripts.js
+
+# Deploy PHP proxy script
+mkdir -p /var/www/html/api
+cp /tmp/app-repo/frontend/proxy/proxy.php /var/www/html/api/proxy.php
+
+# Optionally, set permissions for the proxy script
+chown apache:apache /var/www/html/api/proxy.php
+chmod 644 /var/www/html/api/proxy.php
 
 # Set permissions
 chown -R apache:apache /var/www/html

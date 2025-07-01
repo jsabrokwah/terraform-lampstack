@@ -12,13 +12,14 @@ This directory contains the source code for the LAMP stack todo application.
   - `config/Database.php` - Database connection configuration.
 - `frontend/` - Frontend files for the application.
   - `index.html` - Main HTML page.
+  - `proxy/proxy.php` - PHP proxy script to forward frontend API requests to the app EC2 instance API.
   - `css/style.css` - Stylesheet for the frontend.
-  - `js/scripts.js` - JavaScript for frontend interactivity.
+  - `js/scripts.js` - JavaScript for frontend interactivity. Uses `/api/proxy.php` as the API base URL to route requests through the PHP proxy.
 
 ## Usage
 
 - The API endpoints provide RESTful interfaces for managing todo items.
-- The frontend interacts with the API to provide a user-friendly interface.
+- The frontend interacts with the API through the PHP proxy to handle communication with the app EC2 instance API in a private subnet.
 - Configure the database connection in `api/config/Database.php` before running.
 
 ## Requirements
@@ -38,3 +39,4 @@ This directory contains the source code for the LAMP stack todo application.
 
 - Ensure the database is created and accessible.
 - Adjust permissions as needed for web server access.
+- The frontend JavaScript uses the PHP proxy (`/api/proxy.php`) to forward API requests to the backend API.
