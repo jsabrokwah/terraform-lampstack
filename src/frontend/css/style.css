@@ -1,17 +1,120 @@
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+form#todoForm {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 500px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+#taskInput:focus {
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
+}
+
+form#todoForm button {
+    background-color: #ff6b6b;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form#todoForm button:hover {
+    background-color: #ff4757;
 }
 
 #todoList {
     list-style: none;
     padding: 0;
+    width: 100%;
+    max-width: 500px;
 }
 
 #todoList li {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
+    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
 }
 
-#todoList li:last-child {
-    border-bottom: none;
+#todoList li:hover {
+    transform: translateY(-3px);
+}
+
+#todoList li span {
+    font-size: 1.2rem;
+    color: #333;
+    word-break: break-word;
+    flex: 1;
+}
+
+#todoList li button {
+    background-color: #1e90ff;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+#todoList li button.edit {
+    background-color: #ffa502;
+}
+
+#todoList li button.edit:hover {
+    background-color: #ff7f50;
+}
+
+#todoList li button.delete:hover {
+    background-color: #ff4d4d;
+}
+
+#todoList li button:hover {
+    filter: brightness(0.9);
 }

@@ -10,7 +10,7 @@ systemctl start httpd
 systemctl enable httpd
 
 # Clone the application repo (replace <GIT_REPO_URL> with actual URL)
-git clone <GIT_REPO_URL> /tmp/app-repo
+git clone https://github.com/jsabrokwah/terraform-lampstack.git /tmp/app-repo
 
 # Deploy frontend files
 mkdir -p /var/www/html
