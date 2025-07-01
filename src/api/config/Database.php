@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "todos_db";
-    private $username = "root";
-    private $password = "password";
+    private $host = "DB_HOST_PLACEHOLDER";
+    private $db_name = "DB_NAME_PLACEHOLDER";
+    private $username = "DB_USER_PLACEHOLDER";
+    private $password = "DB_PASS_PLACEHOLDER";
     public $conn;
 
     public function connect() {

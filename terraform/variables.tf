@@ -57,3 +57,10 @@ variable "allowed_ssh_cidr" {
   type        = string
   default     = "0.0.0.0/0"
 }
+
+variable "db_root_password" {
+  description = "Root password for the database"
+  type        = string
+  default     = "rootpassword"
+}
+  

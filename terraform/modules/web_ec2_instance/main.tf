@@ -5,15 +5,9 @@ resource "aws_instance" "web" {
   key_name      = var.key_name
   security_groups = [var.security_group_id]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
-              yum install -y httpd mariadb-server
-              systemctl start httpd
-              systemctl enable httpd
-              echo "<?php phpinfo(); ?>" > /var/www/html/index.php
-              EOF
+  user_data = templatefile("${path.module}/userdata-web.sh", {
+    APP_INSTANCE_PRIVATE_IP = var.app_instance_private_ip
+  })
 
   tags = {
     Name = "${var.name_prefix}-web-instance"

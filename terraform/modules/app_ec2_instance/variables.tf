@@ -27,3 +27,13 @@ variable "name_prefix" {
   description = "Prefix for resource names"
   type        = string
 }
+
+variable "db_host" {
+  description = "Database host IP"
+  type        = string
+}
+
+variable "db_root_password" {
+  description = "Root password for the database"
+  type        = string
+}

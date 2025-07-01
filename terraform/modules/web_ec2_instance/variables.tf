@@ -27,3 +27,8 @@ variable "name_prefix" {
   description = "Prefix for resource names"
   type = string
 }
+
+variable "app_instance_private_ip" {
+  description = "Private IP of the app EC2 instance"
+  type        = string
+}

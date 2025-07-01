@@ -43,6 +43,8 @@ module "web_ec2_instance" {
   key_name         = var.key_name
   security_group_id = module.web_security_group.id
   name_prefix      = var.name_prefix
+
+  app_instance_private_ip = module.app_ec2_instance.private_ip
 }
 
 module "app_security_group" {
@@ -62,6 +64,9 @@ module "app_ec2_instance" {
   key_name         = var.key_name
   security_group_id = module.app_security_group.id
   name_prefix      = var.name_prefix
+
+  db_host          = module.db_ec2_instance.private_ip
+  db_root_password = var.db_root_password
 }
 
 module "db_security_group" {
@@ -81,4 +86,6 @@ module "db_ec2_instance" {
   key_name         = var.key_name
   security_group_id = module.db_security_group.id
   name_prefix      = var.name_prefix
+
+  db_root_password = var.db_root_password
 }

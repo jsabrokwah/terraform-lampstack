@@ -1,3 +1,5 @@
+const API_BASE_URL = 'API_BASE_URL_PLACEHOLDER';
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('todoForm');
     const taskInput = document.getElementById('taskInput');
@@ -5,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to fetch todos
     function fetchTodos() {
-        fetch('api/read.php')
+        fetch(`${API_BASE_URL}/read.php`)
             .then(response => response.json())
             .then(data => {
                 todoList.innerHTML = '';
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const task = taskInput.value;
 
-        fetch('api/create.php', {
+        fetch(`${API_BASE_URL}/create.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.classList.contains('delete')) {
             const id = e.target.dataset.id;
 
-            fetch('api/delete.php', {
+            fetch(`${API_BASE_URL}/delete.php`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

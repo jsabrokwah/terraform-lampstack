@@ -5,13 +5,9 @@ resource "aws_instance" "db" {
   key_name      = var.key_name
   security_groups = [var.security_group_id]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y mariadb-server
-              systemctl start mariadb
-              systemctl enable mariadb
-              EOF
+  user_data = templatefile("${path.module}/userdata-db.sh", {
+    DB_ROOT_PASSWORD = var.db_root_password
+  })
 
   tags = {
     Name = "${var.name_prefix}-db-instance"

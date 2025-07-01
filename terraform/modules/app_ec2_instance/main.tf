@@ -5,14 +5,10 @@ resource "aws_instance" "app" {
   key_name      = var.key_name
   security_groups = [var.security_group_id]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              amazon-linux-extras install -y php7.2
-              yum install -y httpd mariadb
-              systemctl start httpd
-              systemctl enable httpd
-              EOF
+  user_data = templatefile("${path.module}/userdata-app.sh", {
+    DB_HOST         = var.db_host
+    DB_ROOT_PASSWORD = var.db_root_password
+  })
 
   tags = {
     Name = "${var.name_prefix}-app-instance"
