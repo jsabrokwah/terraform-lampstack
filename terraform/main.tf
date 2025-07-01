@@ -6,6 +6,7 @@ module "vpc" {
   availability_zones = var.availability_zones
   name_prefix        = var.name_prefix
   public_subnet_ids  = module.public_subnet.public_subnet_ids
+  private_subnet_ids = module.private_subnet.private_subnet_ids
 }
 
 module "public_subnet" {
